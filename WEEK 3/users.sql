@@ -1,13 +1,23 @@
-CREATE DATABASE login_demo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
- 
-USE login_demo;
- 
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+CREATE DATABASE IF NOT EXISTS zoo_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE zoo_management;
+
+-- users
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
- 
-INSERT INTO users (username, password)
-VALUES ('admin', MD5('123456'));
-login_demousers
+
+-- animals
+CREATE TABLE IF NOT EXISTS animals (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  species VARCHAR(150),
+  age INT,
+  habitat VARCHAR(150),
+  description TEXT,
+  image VARCHAR(255),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
